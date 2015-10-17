@@ -1,17 +1,15 @@
-/* FIXME: Implement! */
 #include"stdio.h"
 
-//int maxSubArray(int A[], int n);
-int maxSubArray(int A[], int n) //check parameters
+int maxSubArray(int A[], int n)
 {
     int maxAll = 0, maxCurrent = 0;
-    int i=0,j=0;
-    for(j=0; j<n; j++) {
-        for(i=j; i<n; i++) {
-            maxCurrent = maxCurrent + A[i];
-            if(maxAll<maxCurrent)
-                maxAll = maxCurrent;
-        }
+    int i = 0;
+    for(i=0; i<n; i++) {
+        maxCurrent = maxCurrent + A[i];
+        if(maxCurrent < 0)
+            maxCurrent = 0;
+        if(maxAll < maxCurrent)
+            maxAll = maxCurrent;
     }
     return maxAll;
 }
