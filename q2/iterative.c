@@ -28,11 +28,11 @@ char smallest_character(char str[], char c)
         if(str[i]>c) {
             c = str[i];
             break;
-        } else
+        } else //simplize begin
             i++;
     }
     if(str[i] == NULL) {
         c = str[0];
     }
     return c;
-}
+}//simplize end
