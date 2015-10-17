@@ -1,38 +1,39 @@
-/* FIXME: Implement! */
 #include"stdio.h"
 #include"stdlib.h"
 
-char smallest_character(char*, char);
+char smallest_character(char str[], char c)
+{
+    int i = 0;
+    while(str[i] != '~') {
+        if(str[i]>c) {
+            c = str[i];
+            break;
+        }else if(str[i] == '~') {
+        	c = str[0];
+    	}else
+            i++;
+    }
+    return c;
+}
 
 int main()
 {
     FILE *fp;
-    char *str, c;
+    char str[100] = {'~'}, c;
+	int n = 0;
 
     fp = fopen("input.txt", "r");
     if(fp == NULL) {
         printf("input error\n");
         return -1;
     }
-        fscanf(fp, "%c %c %c %c %c\n %c", &str[0], &str[1], &str[2], &str[3], &str[4], &c);
+	while(fscanf(fp, "%c", &str[n]) != EOF)
+        	n++;
+	c = str[n-1];
+	str[n-1] = '~';
     c = smallest_character(str,c);
     printf("%c\n", c);
     fclose(fp);
     return 0;
 }
 
-char smallest_character(char str[], char c)
-{
-    int i = 0;
-    while(str[i] != NULL) {
-        if(str[i]>c) {
-            c = str[i];
-            break;
-        } else //simplize begin
-            i++;
-    }
-    if(str[i] == NULL) {
-        c = str[0];
-    }
-    return c;
-}//simplize end
